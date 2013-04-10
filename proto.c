@@ -1,12 +1,15 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
+
+#define dim 1000 /* nombre de particules  */
+#define niter 10 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
 
 double deltat = 0.001;
 double G = 6.6738480e-11;
 double alpha = 6.6738480e-11 * 0.001;
-int dim = 1000; /* nombre d'objets observes */
-int niter = 10; /* nombre d'iteration d'un truc qu'on comprend finalement assez peu */
 
-double m[1000];
+double m[1000] ;
 double r[1000][3];
 
 double Norme(double A[3], double B[3]) {
@@ -27,4 +30,88 @@ double PhiPrimeX(int indice, int k) {
 	else
 		return 0;
 }
+
+double PhiPrimeY(int indice, int k) {
+	if(k!=indice)
+		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][1],r[k][1]) );
+	else
+		return 0;
+}
+
+double PhiPrimeZ(int indice, int k) {
+	if(k!=indice)
+		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][2],r[k][2]) );
+	else
+		return 0;
+}
+
+double SommePhiX(int indice, int level) {
+	switch(level) {
+		case 0:  return 0;
+		default: return ( PhiPrimeX(indice,level-1) + SommePhiX(indice,level-1));
+	}
+}
+
+double SommePhiY(int indice, int level) {
+        switch(level) {
+                case 0:  return 0;
+                default: return ( PhiPrimeY(indice,level-1) + SommePhiY(indice,level-1));
+        }
+}
+
+double SommePhiZ(int indice, int level) {
+        switch(level) {
+                case 0:  return 0;
+                default: return ( PhiPrimeZ(indice,level-1) + SommePhiZ(indice,level-1));
+        }
+}
+
+double EvalVitesseX(int indice) {
+	return(SommePhiX(indice, dim));
+}
+
+double EvalVitesseY(int indice) {
+	return(SommePhiY(indice, dim));
+}
+
+double EvalVitesseZ(int indice) {
+	return(SommePhiZ(indice, dim));
+}
+
+double SommeX(int indice, int iteration) {
+	switch(iteration)
+	{
+		case 10:  return 0;
+		default :    return(EvalVitesseX(indice) + SommeX(indice,iteration+1));
+	}
+}
+
+double SommeY(int indice, int iteration) {
+	switch(iteration)
+	{
+		case 10:  return 0;
+		default :    return(EvalVitesseY(indice) + SommeY(indice,iteration+1));
+	}
+}
+
+double SommeZ(int indice, int iteration) {
+	switch(iteration)
+	{
+		case 10:  return 0;
+		default :    return(EvalVitesseZ(indice) + SommeZ(indice,iteration+1));
+	}
+}
+
+double EvolutionX(int indice) {
+	return(SommeX(indice,0));
+}
+
+double EvolutionY(int indice) {
+	return(SommeY(indice,0));
+}
+
+double EvolutionZ(int indice) {
+	return(SommeZ(indice,0));
+}
+
 
