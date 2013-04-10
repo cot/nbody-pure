@@ -1,5 +1,5 @@
-#define npart 1000 /* nombre de particules  */
-#define niter 10 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
+#define npart 2 /* nombre de particules  */
+#define niter 1 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
 #define dim 3 /* dimension spatiale du probleme */
 
 double deltat = 0.001;
@@ -9,7 +9,7 @@ double alpha = 6.6738480e-11 * 0.001;
 double m[npart] ;
 double r[npart][dim];
 
-double Norme(double A[3], double B[3]); 
+double Norme(double A[dim], double B[dim]); 
 double UnCube(double v);
 double Distance(double v, double w);
 double PhiPrimeX(int indice, int k);

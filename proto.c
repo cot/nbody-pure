@@ -73,7 +73,7 @@ double EvalVitesseZ(int indice) {
 double SommeX(int indice, int iteration) {
 	switch(iteration)
 	{
-		case 10:  return 0;
+		case niter:  return 0;
 		default :    return(EvalVitesseX(indice) + SommeX(indice,iteration+1));
 	}
 }
@@ -81,7 +81,7 @@ double SommeX(int indice, int iteration) {
 double SommeY(int indice, int iteration) {
 	switch(iteration)
 	{
-		case 10:  return 0;
+		case niter:  return 0;
 		default :    return(EvalVitesseY(indice) + SommeY(indice,iteration+1));
 	}
 }
@@ -89,7 +89,7 @@ double SommeY(int indice, int iteration) {
 double SommeZ(int indice, int iteration) {
 	switch(iteration)
 	{
-		case 10:  return 0;
+		case niter:  return 0;
 		default :    return(EvalVitesseZ(indice) + SommeZ(indice,iteration+1));
 	}
 }
