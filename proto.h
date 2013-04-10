@@ -1,3 +1,13 @@
+#define dim 1000 /* nombre de particules  */
+#define niter 10 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
+
+double deltat = 0.001;
+double G = 6.6738480e-11;
+double alpha = 6.6738480e-11 * 0.001;
+
+double m[1000] ;
+double r[1000][3];
+
 double Norme(double A[3], double B[3]); 
 double UnCube(double v);
 double Distance(double v, double w);
