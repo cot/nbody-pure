@@ -59,15 +59,15 @@ double SommePhiZ(int indice, int level) {
 }
 
 double EvalVitesseX(int indice) {
-	return(SommePhiX(indice, dim));
+	return(SommePhiX(indice, npart));
 }
 
 double EvalVitesseY(int indice) {
-	return(SommePhiY(indice, dim));
+	return(SommePhiY(indice, npart));
 }
 
 double EvalVitesseZ(int indice) {
-	return(SommePhiZ(indice, dim));
+	return(SommePhiZ(indice, npart));
 }
 
 double SommeX(int indice, int iteration) {
