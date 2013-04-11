@@ -1,10 +1,18 @@
-#define npart 200000 /* nombre de particules  */
+#ifdef DEBUG
+#define npart 3 /* nombre de particules  */
 #define niter 1000000000 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
 #define dim 3 /* dimension spatiale du probleme */
 #define deltat 0.0001 /* pas de temps du problème */
+#define G 6.6738480e-11 /* Constante Gravitationnelle ( m^3 * kg^-1 * s^-2 ) */
+#else
+#define npart 3 /* nombre de particules  */
+#define niter 1000000000 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
+#define dim 3 /* dimension spatiale du probleme */
+#define deltat 0.0001 /* pas de temps du problème */
+#define G 6.6738480e-11 /* Constante Gravitationnelle ( m^3 * kg^-1 * s^-2 ) */
+#endif
 
-double G = 6.6738480e-11;
-double alpha = 6.6738480e-11 * (double) deltat;
+double alpha = (double) G * (1.0e+3)*(1.0e+3)*(1.0e+3) * (double) deltat;
 
 double m[npart] ;
 double r[npart][dim];
