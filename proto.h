@@ -16,7 +16,7 @@ double alpha = (double) G * (1.0e+3)*(1.0e+3)*(1.0e+3) * (double) deltat;
 double m[npart] ;
 double r[npart][dim];
 
-double carre(double v);
+double Carre(double v);
 double Norme(double A[dim], double B[dim]); 
 double UnCube(double v);
 double Distance(double v, double w);

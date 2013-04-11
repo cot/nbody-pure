@@ -21,12 +21,12 @@ double Distance(double v, double w) {
         return(v-w);
 }
 
-/*! \fn double carre(double v)
+/*! \fn double Carre(double v)
  *  \brief Permet d'evaluer le carre d'un nombre
  *  \param[in] "v" première valeur d'entrée
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
-double carre(double v) {
+double Carre(double v) {
         return(v*v);
 }
 
@@ -37,7 +37,7 @@ double carre(double v) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double Norme(double A[3], double B[3]) {
-	return(sqrt( carre(Distance(A[0],B[0])) + carre(Distance(A[1],B[1])) + carre(Distance(A[2],B[2])) ) ) ;
+	return(sqrt( Carre(Distance(A[0],B[0])) + Carre(Distance(A[1],B[1])) + Carre(Distance(A[2],B[2])) ) ) ;
 }
 
 /*! \fn double UnCube(double v)
