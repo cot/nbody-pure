@@ -18,7 +18,7 @@
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double Distance(double v, double w) {
-        return(v-w);
+	return(v-w);
 }
 
 /*! \fn double Carre(double v)
@@ -27,7 +27,7 @@ double Distance(double v, double w) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double Carre(double v) {
-        return(v*v);
+	return(v*v);
 }
 
 /*! \fn double Norme(double A[3], double B[3])
