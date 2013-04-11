@@ -2,6 +2,9 @@ $(CC) = gcc
 
 all: nbody
 
+solaire: CC += -DSOLAIRE
+solaire: nbody
+
 debug: CC += -DDEBUG -g
 debug: nbody
 

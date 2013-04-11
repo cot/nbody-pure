@@ -24,12 +24,22 @@ int main() {
 	int i,j;
 	int alea;
 
+#ifdef SOLAIRE
 	for (i=0;i<npart;i++) {
 		m[i] = 1.8986e+27 * rand() + 1.314e+22 ; /* masse des planetes du systeme solaire: 1.314*1e22 < m < 1.8986*1e27 (en kg)*/
 		for (j=0;j<dim;j++) {
 			r[i][j] = (5914.65*1e6 * rand() + 57.9*1e6) * 1.0e+3 ; /* distance moyenne au soleil: 57.9 < d < 5914.65 (en millions de km) */
 		}
 	}
+
+#else
+	for (i=0;i<npart;i++) {
+		m[i] = 1.8986e+27 * rand() + 1.314e+22 ; /* masse des planetes du systeme solaire: 1.314*1e22 < m < 1.8986*1e27 (en kg)*/
+		for (j=0;j<dim;j++) {
+			r[i][j] = (5914.65*1e6 * rand() + 57.9*1e6) * 1.0e+3 ; /* distance moyenne au soleil: 57.9 < d < 5914.65 (en millions de km) */
+		}
+	}
+#endif
 
 	printf("_________________________________________________________________________\n\n");
 
