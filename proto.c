@@ -45,17 +45,17 @@ double SommePhiX(int indice, int level) {
 }
 
 double SommePhiY(int indice, int level) {
-        switch(level) {
-                case 0:  return 0;
-                default: return ( PhiPrimeY(indice,level-1) + SommePhiY(indice,level-1));
-        }
+	switch(level) {
+		case 0:  return 0;
+		default: return ( PhiPrimeY(indice,level-1) + SommePhiY(indice,level-1));
+	}
 }
 
 double SommePhiZ(int indice, int level) {
-        switch(level) {
-                case 0:  return 0;
-                default: return ( PhiPrimeZ(indice,level-1) + SommePhiZ(indice,level-1));
-        }
+	switch(level) {
+		case 0:  return 0;
+		default: return ( PhiPrimeZ(indice,level-1) + SommePhiZ(indice,level-1));
+	}
 }
 
 double EvalVitesseX(int indice) {

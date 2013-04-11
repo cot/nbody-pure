@@ -1,5 +1,5 @@
-#define npart 2 /* nombre de particules  */
-#define niter 100000 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
+#define npart 200000 /* nombre de particules  */
+#define niter 1000000000 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
 #define dim 3 /* dimension spatiale du probleme */
 #define deltat 0.0001 /* pas de temps du problème */
 
