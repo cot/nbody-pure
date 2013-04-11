@@ -1,6 +1,6 @@
 #ifdef SOLAIRE
    #define npart 9 /* nombre de particules  */
-   #define niter 1000000 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
+   #define niter 1 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
    #define deltat 0.0001 /* pas de temps du problème */
 #else
    #define npart 3 /* nombre de particules  */

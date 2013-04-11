@@ -49,6 +49,12 @@ double UnCube(double v) {
 	return(1.0/(v*v*v));
 }
 
+/*! \fn double PhiPrimeX(int indice, int k)
+ *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiPrimeX évalue l'influence dans la direction x.
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "k" l'indice de l'astre dont on évalue l'influence
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double PhiPrimeX(int indice, int k) {
 	if(k!=indice)
 		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][0],r[k][0]) );
@@ -56,6 +62,12 @@ double PhiPrimeX(int indice, int k) {
 		return 0;
 }
 
+/*! \fn double PhiPrimeY(int indice, int k)
+ *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiPrimeY évalue l'influence dans la direction y.
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "k" l'indice de l'astre dont on évalue l'influence
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double PhiPrimeY(int indice, int k) {
 	if(k!=indice)
 		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][1],r[k][1]) );
@@ -63,6 +75,12 @@ double PhiPrimeY(int indice, int k) {
 		return 0;
 }
 
+/*! \fn double PhiPrimeZ(int indice, int k)
+ *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiPrimeZ évalue l'influence dans la direction z.
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "k" l'indice de l'astre dont on évalue l'influence
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double PhiPrimeZ(int indice, int k) {
 	if(k!=indice)
 		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][2],r[k][2]) );
@@ -70,6 +88,12 @@ double PhiPrimeZ(int indice, int k) {
 		return 0;
 }
 
+/*! \fn double SommePhiX(int indice, int level)
+ *  \brief Permet de sommer les influences de chacun des astres agissant sur l'astre étudié: SommePhiX évalue l'influence globale dans la direction x.
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "level" le niveau d'évaluation où l'on se trouve; c'est le paramètre recursif
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double SommePhiX(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
@@ -77,6 +101,12 @@ double SommePhiX(int indice, int level) {
 	}
 }
 
+/*! \fn double SommePhiY(int indice, int level)
+ *  \brief Permet de sommer les influences de chacun des astres agissant sur l'astre étudié: SommePhiY évalue l'influence globale dans la direction y.
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "level" le niveau d'évaluation où l'on se trouve; c'est le paramètre recursif
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double SommePhiY(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
@@ -84,6 +114,12 @@ double SommePhiY(int indice, int level) {
 	}
 }
 
+/*! \fn double SommePhiZ(int indice, int level)
+ *  \brief Permet de sommer les influences de chacun des astres agissant sur l'astre étudié: SommePhiZ évalue l'influence globale dans la direction z.
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "level" le niveau d'évaluation où l'on se trouve; c'est le paramètre recursif
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double SommePhiZ(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
@@ -91,14 +127,29 @@ double SommePhiZ(int indice, int level) {
 	}
 }
 
+/*! \fn double EvalVitesseX(int indice)
+ *  \brief Permet d'évaluer la vitesse au regard de l'accéleration (somme des influences de chaque astre sur l'astre observé)
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double EvalVitesseX(int indice) {
 	return(SommePhiX(indice, npart));
 }
 
+/*! \fn double EvalVitesseY(int indice)
+ *  \brief Permet d'évaluer la vitesse au regard de l'accéleration (somme des influences de chaque astre sur l'astre observé)
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double EvalVitesseY(int indice) {
 	return(SommePhiY(indice, npart));
 }
 
+/*! \fn double EvalVitesseZ(int indice)
+ *  \brief Permet d'évaluer la vitesse au regard de l'accéleration (somme des influences de chaque astre sur l'astre observé)
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double EvalVitesseZ(int indice) {
 	return(SommePhiZ(indice, npart));
 }
