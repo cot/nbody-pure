@@ -1,10 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-
-#include "proto.h"
-
-
 /**
  *\author François Rué
  *\version 0.1
@@ -12,6 +5,30 @@
  *\file proto.c
  *\brief Probleme a n-corps multidimensionnel pour le cas d'effet gravitationnel
  */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "proto.h"
+
+/*! \fn double Distance(double v, double w)
+ *  \brief Permet d'evaluer la distance entre deux points: cette fonction permet d'évaluer chaque entitée dans chaque direction
+ *  \param[in] "v" première valeur d'entrée
+ *  \param[in] "w" seconde valeur d'entrée
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
+double Distance(double v, double w) {
+        return(v-w);
+}
+
+/*! \fn double carre(double v)
+ *  \brief Permet d'evaluer le carre d'un nombre
+ *  \param[in] "v" première valeur d'entrée
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
+double carre(double v) {
+        return(v*v);
+}
 
 /*! \fn double Norme(double A[3], double B[3])
  *  \brief Permet d'evaluer la norme L2 de la différence de deux vecteurs A et B, représentés en coordonnées cartésiennes (x,y,z)
@@ -20,7 +37,7 @@
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double Norme(double A[3], double B[3]) {
-	return(sqrt( (A[0]-B[0])*(A[0]-B[0]) + (A[1]-B[1])*(A[1]-B[1]) + (A[2]-B[2])*(A[2]-B[2])  ));
+	return(sqrt( carre(Distance(A[0],B[0])) + carre(Distance(A[1],B[1])) + carre(Distance(A[2],B[2])) ) ) ;
 }
 
 /*! \fn double UnCube(double v)
@@ -30,16 +47,6 @@ double Norme(double A[3], double B[3]) {
  */
 double UnCube(double v) {
 	return(1.0/(v*v*v));
-}
-
-/*! \fn double Distance(double v, double w)
- *  \brief Permet d'evaluer la distance entre deux points: cette fonction permet d'évaluer chaque entitée dans chaque direction
- *  \param[in] "v" première valeur d'entrée
- *  \param[in] "w" seconde valeur d'entrée
- *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
- */
-double Distance(double v, double w) {
-	return(v-w);
 }
 
 double PhiPrimeX(int indice, int k) {
