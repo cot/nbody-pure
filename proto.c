@@ -95,15 +95,15 @@ double SommeZ(int indice, int iteration) {
 }
 
 double EvolutionX(int indice) {
-	return(SommeX(indice,0));
+	return(-1.0 * SommeX(indice,0));
 }
 
 double EvolutionY(int indice) {
-	return(SommeY(indice,0));
+	return(-1.0 * SommeY(indice,0));
 }
 
 double EvolutionZ(int indice) {
-	return(SommeZ(indice,0));
+	return(-1.0 * SommeZ(indice,0));
 }
 
 
