@@ -13,8 +13,8 @@
 
 #ifdef SOLAIRE
    #define npart 9 
-   #define niter 1 
-   #define deltat 0.0001 
+   #define niter 100000
+   #define deltat 0.01 
 #else
    #define npart 3 
    #define niter 1000000000 
@@ -24,7 +24,7 @@
 #define dim 3 
 #define G 6.6738480e-11 
 
-double alpha = (double) (-1.0) * (double) G * (double)1000000000.0 * (double) deltat;
+double alpha = (double) (-1.0) * (double) G  * (double) deltat;
 
 double m[npart] ;
 double r[npart][dim];
