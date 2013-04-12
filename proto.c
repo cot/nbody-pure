@@ -49,39 +49,39 @@ double UnCube(double v) {
 	return(1.0/(v*v*v));
 }
 
-/*! \fn double PhiPrimeX(int indice, int k)
- *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiPrimeX évalue l'influence dans la direction x.
+/*! \fn double PhiX(int indice, int k)
+ *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiX évalue l'influence dans la direction x.
  *  \param[in] "indice" l'indice de l'astre qu'on observe
  *  \param[in] "k" l'indice de l'astre dont on évalue l'influence
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
-double PhiPrimeX(int indice, int k) {
+double PhiX(int indice, int k) {
 	if(k!=indice)
 		return( m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][0],r[k][0]) );
 	else
 		return 0;
 }
 
-/*! \fn double PhiPrimeY(int indice, int k)
- *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiPrimeY évalue l'influence dans la direction y.
+/*! \fn double PhiY(int indice, int k)
+ *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiY évalue l'influence dans la direction y.
  *  \param[in] "indice" l'indice de l'astre qu'on observe
  *  \param[in] "k" l'indice de l'astre dont on évalue l'influence
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
-double PhiPrimeY(int indice, int k) {
+double PhiY(int indice, int k) {
 	if(k!=indice)
 		return( m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][1],r[k][1]) );
 	else
 		return 0;
 }
 
-/*! \fn double PhiPrimeZ(int indice, int k)
- *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiPrimeZ évalue l'influence dans la direction z.
+/*! \fn double PhiZ(int indice, int k)
+ *  \brief Permet d'evaluer chacune des influences des autres astres sur l'astre évalué: PhiZ évalue l'influence dans la direction z.
  *  \param[in] "indice" l'indice de l'astre qu'on observe
  *  \param[in] "k" l'indice de l'astre dont on évalue l'influence
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
-double PhiPrimeZ(int indice, int k) {
+double PhiZ(int indice, int k) {
 	if(k!=indice)
 		return( m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][2],r[k][2]) );
 	else
@@ -97,7 +97,7 @@ double PhiPrimeZ(int indice, int k) {
 double SommePhiX(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiPrimeX(indice,level-1) + SommePhiX(indice,level-1));
+		default: return ( PhiX(indice,level-1) + SommePhiX(indice,level-1));
 	}
 }
 
@@ -110,7 +110,7 @@ double SommePhiX(int indice, int level) {
 double SommePhiY(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiPrimeY(indice,level-1) + SommePhiY(indice,level-1));
+		default: return ( PhiY(indice,level-1) + SommePhiY(indice,level-1));
 	}
 }
 
@@ -123,7 +123,7 @@ double SommePhiY(int indice, int level) {
 double SommePhiZ(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiPrimeZ(indice,level-1) + SommePhiZ(indice,level-1));
+		default: return ( PhiZ(indice,level-1) + SommePhiZ(indice,level-1));
 	}
 }
 
@@ -155,8 +155,9 @@ double EvalVitesseZ(int indice) {
 }
 
 /*! \fn double SommeX(int indice, int iteration)
- *  \brief Permet d'évaluer la vitesse au regard de l'accéleration (somme des influences de chaque astre sur l'astre observé)
+ *  \brief Permet d'évaluer la vitesse au pas de temps d'iteration désiré dans la direction X
  *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "iteration" l'indice de l'iteration terminale
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double SommeX(int indice, int iteration) {
@@ -167,6 +168,12 @@ double SommeX(int indice, int iteration) {
 	}
 }
 
+/*! \fn double SommeY(int indice, int iteration)
+ *  \brief Permet d'évaluer la vitesse au pas de temps d'iteration désiré dans la direction Y
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "iteration" l'indice de l'iteration terminale
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double SommeY(int indice, int iteration) {
 	switch(iteration)
 	{
@@ -175,6 +182,12 @@ double SommeY(int indice, int iteration) {
 	}
 }
 
+/*! \fn double SommeZ(int indice, int iteration)
+ *  \brief Permet d'évaluer la vitesse au pas de temps d'iteration désiré dans la direction Z
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \param[in] "iteration" l'indice de l'iteration terminale
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double SommeZ(int indice, int iteration) {
 	switch(iteration)
 	{
@@ -183,14 +196,29 @@ double SommeZ(int indice, int iteration) {
 	}
 }
 
+/*! \fn double EvolutionX(int indice)
+ *  \brief Permet d'évaluer le deplacement au pas de temps d'iteration désiré dans la direction X
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double EvolutionX(int indice) {
 	return( SommeX(indice,0) );
 }
 
+/*! \fn double EvolutionY(int indice)
+ *  \brief Permet d'évaluer le deplacement au pas de temps d'iteration désiré dans la direction Y
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double EvolutionY(int indice) {
 	return( SommeY(indice,0) );
 }
 
+/*! \fn double EvolutionZ(int indice)
+ *  \brief Permet d'évaluer le deplacement au pas de temps d'iteration désiré dans la direction Z
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double EvolutionZ(int indice) {
 	return( SommeZ(indice,0) );
 }

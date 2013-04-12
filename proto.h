@@ -24,7 +24,7 @@
 #define dim 3 
 #define G 6.6738480e-11 
 
-double alpha = (double) G * (double)1000000000.0 * (double) deltat;
+double alpha = (double) (-1.0) * (double) G * (double)1000000000.0 * (double) deltat;
 
 double m[npart] ;
 double r[npart][dim];
@@ -33,9 +33,9 @@ double Carre(double v);
 double Norme(double A[dim], double B[dim]); 
 double UnCube(double v);
 double Distance(double v, double w);
-double PhiPrimeX(int indice, int k);
-double PhiPrimeY(int indice, int k);
-double PhiPrimeZ(int indice, int k);
+double PhiX(int indice, int k);
+double PhiY(int indice, int k);
+double PhiZ(int indice, int k);
 double SommePhiX(int indice, int level);
 double SommePhiY(int indice, int level);
 double SommePhiZ(int indice, int level);
@@ -43,8 +43,8 @@ double EvalVitesseX(int indice);
 double EvalVitesseY(int indice);
 double EvalVitesseZ(int indice);
 double SommeX(int indice, int iteration);
-double SommeX(int indice, int iteration);
-double SommeX(int indice, int iteration);
+double SommeY(int indice, int iteration);
+double SommeZ(int indice, int iteration);
 double EvolutionX(int indice);
 double EvolutionY(int indice);
 double EvolutionZ(int indice);
