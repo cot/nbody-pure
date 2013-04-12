@@ -57,7 +57,7 @@ double UnCube(double v) {
  */
 double PhiPrimeX(int indice, int k) {
 	if(k!=indice)
-		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][0],r[k][0]) );
+		return( m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][0],r[k][0]) );
 	else
 		return 0;
 }
@@ -70,7 +70,7 @@ double PhiPrimeX(int indice, int k) {
  */
 double PhiPrimeY(int indice, int k) {
 	if(k!=indice)
-		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][1],r[k][1]) );
+		return( m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][1],r[k][1]) );
 	else
 		return 0;
 }
@@ -83,7 +83,7 @@ double PhiPrimeY(int indice, int k) {
  */
 double PhiPrimeZ(int indice, int k) {
 	if(k!=indice)
-		return(alpha * m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][2],r[k][2]) );
+		return( m[k] * UnCube(Norme(r[indice],r[k])) * Distance(r[indice][2],r[k][2]) );
 	else
 		return 0;
 }
@@ -133,7 +133,7 @@ double SommePhiZ(int indice, int level) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double EvalVitesseX(int indice) {
-	return(SommePhiX(indice, npart));
+	return(alpha * SommePhiX(indice, npart));
 }
 
 /*! \fn double EvalVitesseY(int indice)
@@ -142,7 +142,7 @@ double EvalVitesseX(int indice) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double EvalVitesseY(int indice) {
-	return(SommePhiY(indice, npart));
+	return(alpha * SommePhiY(indice, npart));
 }
 
 /*! \fn double EvalVitesseZ(int indice)
@@ -151,9 +151,14 @@ double EvalVitesseY(int indice) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double EvalVitesseZ(int indice) {
-	return(SommePhiZ(indice, npart));
+	return(alpha * SommePhiZ(indice, npart));
 }
 
+/*! \fn double SommeX(int indice, int iteration)
+ *  \brief Permet d'évaluer la vitesse au regard de l'accéleration (somme des influences de chaque astre sur l'astre observé)
+ *  \param[in] "indice" l'indice de l'astre qu'on observe
+ *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
+ */
 double SommeX(int indice, int iteration) {
 	switch(iteration)
 	{
@@ -179,15 +184,15 @@ double SommeZ(int indice, int iteration) {
 }
 
 double EvolutionX(int indice) {
-	return(-1.0 * SommeX(indice,0));
+	return( SommeX(indice,0) );
 }
 
 double EvolutionY(int indice) {
-	return(-1.0 * SommeY(indice,0));
+	return( SommeY(indice,0) );
 }
 
 double EvolutionZ(int indice) {
-	return(-1.0 * SommeZ(indice,0));
+	return( SommeZ(indice,0) );
 }
 
 

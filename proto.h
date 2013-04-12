@@ -1,17 +1,30 @@
+/**
+ * \author François Rué
+ * \version 0.1
+ * \date 11 avril 2013
+ * \file proto.h
+ * \brief fichier d'entête pour les prototypes de fonctions contenant les variables globales utiles au problème
+ * \param npart nombre de particules
+ * \param niter nombre d'iterations
+ * \param deltat pas de temps du probleme (pour l'evaluation de la vitesse puis du deplacement)
+ * \param dim dimension spatiale du probleme
+ * \param G constante gravitationnelle (m^3 * kg^-1 * s^-2)
+ */
+
 #ifdef SOLAIRE
-   #define npart 9 /* nombre de particules  */
-   #define niter 1 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
-   #define deltat 0.0001 /* pas de temps du problème */
+   #define npart 9 
+   #define niter 1 
+   #define deltat 0.0001 
 #else
-   #define npart 3 /* nombre de particules  */
-   #define niter 1000000000 /* nombre d'iteration d'un truc qu'on comprend finalement assez peu  */
-   #define deltat 0.0001 /* pas de temps du problème */
+   #define npart 3 
+   #define niter 1000000000 
+   #define deltat 0.0001 
 #endif
 
-#define dim 3 /* dimension spatiale du probleme */
-#define G 6.6738480e-11 /* Constante Gravitationnelle ( m^3 * kg^-1 * s^-2 ) */
+#define dim 3 
+#define G 6.6738480e-11 
 
-double alpha = (double) G * (1.0e+3)*(1.0e+3)*(1.0e+3) * (double) deltat;
+double alpha = (double) G * (double)1000000000.0 * (double) deltat;
 
 double m[npart] ;
 double r[npart][dim];
