@@ -95,10 +95,12 @@ double PhiZ(int indice, int k) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double SommePhiX(int indice, int level) {
+	double res;
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiX(indice,level-1) + SommePhiX(indice,level-1));
+		default: res = PhiX(indice,level-1) + SommePhiX(indice,level-1);
 	}
+	return res;
 }
 
 /*! \fn double SommePhiY(int indice, int level)
@@ -108,10 +110,12 @@ double SommePhiX(int indice, int level) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double SommePhiY(int indice, int level) {
+	double res;
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiY(indice,level-1) + SommePhiY(indice,level-1));
+		default: res = PhiY(indice,level-1) + SommePhiY(indice,level-1);
 	}
+	return res;
 }
 
 /*! \fn double SommePhiZ(int indice, int level)
@@ -121,10 +125,12 @@ double SommePhiY(int indice, int level) {
  *  \return toutes les fonctions de proto.c sont créées pour n'effectuer que des retours de type double
  */
 double SommePhiZ(int indice, int level) {
+	double res;
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiZ(indice,level-1) + SommePhiZ(indice,level-1));
+		default: res = PhiZ(indice,level-1) + SommePhiZ(indice,level-1);
 	}
+	return res;
 }
 
 /*! \fn double EvalVitesseX(int indice)
