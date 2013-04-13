@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 	int i,j;
 	int alea;
 	char *planete[9];
+	double newX, newY, newZ;
 
 #ifdef SOLAIRE
 	for (i=0;i<npart;i++) {
@@ -51,34 +52,36 @@ planete[8] = "neptune";		m[8] = 102*1e24;	r[8][1] = 4495.1*1.0e+6;	r[8][2] = 449
 
 	printf("_________________________________________________________________________\n\n");
 
-	if(argc > 1) {
-		printf("%s\n",argv[1]);
-		for (i=0;i<npart;i++) {
-			printf(" Pour la particule %s de coordonnées (%g,%g,%g) \n",planete[i],r[i][0],r[i][1],r[i][2]);
-			printf("vitesse globale: %g km.s^-1\n ",sqrt(Carre(SommeX(i,0))+Carre(SommeY(i,0))+Carre(SommeZ(i,0))) );
-			double newX = EvalVitesseX(i) * deltat + r[i][0];
-			double newY = EvalVitesseY(i) * deltat + r[i][1]; 
-			double newZ = EvalVitesseZ(i) * deltat + r[i][2]; 
-			printf(" la nouvelle position est alors: (%g,%g,%g) \n",newX,newY,newZ);
-			printf("#########################################################################\n\n");
-		}
-	}
-	else {
-		srand((int)time(NULL));
-		alea = rand() % npart;
+        if(argc > 1) {
+		/*
+		   srand((int)time(NULL));
+		   alea = rand() % npart;
+		 */
+		alea = atoi(argv[1]);
 
 		printf(" Nombre de particules : %i\n", npart);
-		printf(" Pour la particule %i de coordonnées (%g,%g,%g) \n",alea,r[alea][0],r[alea][1],r[alea][2]);
+		printf(" Pour la particule %s de coordonnées (%g,%g,%g) \n",planete[alea],r[alea][0],r[alea][1],r[alea][2]);
 		
 		   printf(" --> La vitesse estimée suivant x vaut: %g km.s^-1\n",EvalVitesseX(alea));
 		   printf(" --> La vitesse estimée suivant Y vaut: %g km.s^-1\n",EvalVitesseY(alea));
 		   printf(" --> La vitesse estimée suivant Z vaut: %g km.s^-1\n",EvalVitesseZ(alea));
 	
 		printf("vitesse globale: %g km.s^-1 ------>\t",sqrt(Carre(EvalVitesseX(alea))+Carre(EvalVitesseY(alea))+Carre(EvalVitesseZ(alea))) );
-		double newX = EvalVitesseX(alea) * deltat + r[alea][0];
-		double newY = EvalVitesseY(alea) * deltat + r[alea][1]; 
-		double newZ = EvalVitesseZ(alea) * deltat + r[alea][2]; 
+		newX = EvalVitesseX(alea) * deltat + r[alea][0];
+		newY = EvalVitesseY(alea) * deltat + r[alea][1]; 
+		newZ = EvalVitesseZ(alea) * deltat + r[alea][2]; 
 		printf(" la nouvelle position est alors: (%g,%g,%g) \n",newX,newY,newZ);
+	}
+	else {
+		for (i=0;i<npart;i++) {
+			printf(" Pour la particule %s de coordonnées (%g,%g,%g) \n",planete[i],r[i][0],r[i][1],r[i][2]);
+			printf("vitesse globale: %g km.s^-1\n ",sqrt(Carre(SommeX(i,0))+Carre(SommeY(i,0))+Carre(SommeZ(i,0))) );
+			newX = EvalVitesseX(i) * deltat + r[i][0];
+			newY = EvalVitesseY(i) * deltat + r[i][1]; 
+			newZ = EvalVitesseZ(i) * deltat + r[i][2]; 
+			printf(" la nouvelle position est alors: (%g,%g,%g) \n",newX,newY,newZ);
+			printf("#########################################################################\n\n");
+		}
 	}
 	printf("_________________________________________________________________________\n\n");
 	printf("everything's good \n");

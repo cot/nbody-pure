@@ -97,7 +97,7 @@ double PhiZ(int indice, int k) {
 double SommePhiX(int indice, int level) {
 	switch(level) {
 		case 0:  return 0;
-		default: return ( PhiX(indice,level-1) + SommePhiX(indice,level-1));
+		default: return( PhiX(indice,level-1) + SommePhiX(indice,level-1));
 	}
 }
 

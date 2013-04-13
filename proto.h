@@ -13,8 +13,8 @@
 
 #ifdef SOLAIRE
    #define npart 9 
-   #define niter 100000
-   #define deltat 0.01 
+   #define niter 100
+   #define deltat 0.0001 
 #else
    #define npart 3 
    #define niter 1000000000 
